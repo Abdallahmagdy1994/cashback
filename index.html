@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عرض الكاش باك 15% - الأبواب الداخلية والخارجية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:       #C8932A;
+      --gold-light: #F0C96B;
+      --gold-pale:  #FDF6E3;
+      --dark:       #1A1A2E;
+      --dark-2:     #16213E;
+      --dark-3:     #0F3460;
+      --white:      #FFFFFF;
+      --text-muted: #7B8BA0;
+      --red-soft:   #E53935;
+      --green-soft: #2E7D32;
+      --border:     rgba(200,147,42,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-3) 60%, #0a2040 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 60px 24px 80px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(200,147,42,0.18) 0%, transparent 70%),
+        radial-gradient(circle 300px at 10% 80%, rgba(200,147,42,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+      font-size: clamp(3.5rem, 12vw, 8rem);
+      line-height: 1;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+    }
+    .hero-deadline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(200,147,42,0.12);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: 1rem;
+    }
+    .hero-deadline svg { flex-shrink: 0; }
+
+    /* ===== SECTION WRAPPER ===== */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 56px 0; }
+    .section-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    }
+
+    /* ===== PRICE CARDS ===== */
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .price-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .price-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(200,147,42,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .price-card .icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .price-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .offer-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .offer-price .amount { font-size: 2rem; font-weight: 900; color: var(--gold); }
+    .offer-price .unit { font-size: 0.85rem; color: var(--text-muted); }
+    .normal-price {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .normal-price span { color: rgba(255,255,255,0.55); }
+    .tag-offer {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    /* ===== CASHBACK MECHANIC ===== */
+    .mechanic-box {
+      background: linear-gradient(135deg, rgba(200,147,42,0.08) 0%, rgba(15,52,96,0.5) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .example-calc {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(200,147,42,0.3);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.95rem;
+    }
+    .calc-row:last-child { border-bottom: none; }
+    .calc-row .label { color: rgba(255,255,255,0.65); }
+    .calc-row .value { font-weight: 700; color: var(--white); }
+    .calc-row.highlight .label { color: var(--gold-light); font-weight: 700; }
+    .calc-row.highlight .value { color: var(--gold); font-size: 1.25rem; font-weight: 900; }
+
+    /* ===== STEPS ===== */
+    .steps-list { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 21px;
+      top: 48px;
+      width: 2px;
+      height: calc(100% - 16px);
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+    }
+    .step-body {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .step-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--gold-light); }
+    .step-body p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+    .step-alert {
+      background: rgba(229,57,53,0.12);
+      border: 1px solid rgba(229,57,53,0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #FFCDD2;
+      line-height: 1.6;
+    }
+    .step-tip {
+      background: rgba(46,125,50,0.12);
+      border: 1px solid rgba(46,125,50,0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #C8E6C9;
+      line-height: 1.6;
+    }
+
+    /* ===== TERMS & POLICY ===== */
+    .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 620px) { .terms-grid { grid-template-columns: 1fr; } }
+
+    .terms-panel {
+      background: rgba(255,255,255,0.03);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+    }
+    .terms-panel h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terms-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .terms-list li {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      padding-right: 18px;
+      position: relative;
+    }
+    .terms-list li::before {
+      content: '◈';
+      position: absolute;
+      right: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 3px;
+    }
+
+    /* ===== COUPON RULES ===== */
+    .coupon-rules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .rule-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .rule-chip .chip-icon { font-size: 1.4rem; }
+    .rule-chip .chip-label { font-size: 0.78rem; color: var(--text-muted); }
+    .rule-chip .chip-val { font-size: 0.9rem; font-weight: 700; color: var(--white); line-height: 1.4; }
+
+    /* ===== WARNING BOX ===== */
+    .warning-box {
+      background: linear-gradient(135deg, rgba(229,57,53,0.1), rgba(183,28,28,0.05));
+      border: 1.5px solid rgba(229,57,53,0.4);
+      border-radius: 16px;
+      padding: 28px 28px;
+    }
+    .warning-box h3 {
+      color: #EF9A9A;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .warning-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .warning-box ul li {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      padding-right: 22px;
+      position: relative;
+    }
+    .warning-box ul li::before {
+      content: '⚠';
+      position: absolute;
+      right: 0;
+      font-size: 0.75rem;
+      top: 2px;
+    }
+
+    /* ===== CONTACTS ===== */
+    .contacts { display: flex; gap: 18px; flex-wrap: wrap; }
+    .contact-card {
+      flex: 1;
+      min-width: 200px;
+      background: linear-gradient(135deg, rgba(200,147,42,0.1), rgba(15,52,96,0.4));
+      border: 1.5px solid var(--gold);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .contact-card .avatar {
+      width: 52px; height: 52px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .contact-card .name { font-weight: 800; font-size: 1rem; color: var(--white); margin-bottom: 4px; }
+    .contact-card .role { font-size: 0.82rem; color: var(--gold-light); }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(200,147,42,0.2);
+      margin: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(0,0,0,0.4);
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.8;
+    }
+    footer strong { color: var(--gold-light); }
+
+    @media (max-width: 480px) {
+      .mechanic-box { padding: 24px 18px; }
+      .terms-panel { padding: 22px 18px; }
+      .hero h1 span { font-size: clamp(3rem, 18vw, 5rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="badge">عرض حصري • محدود المدة</div>
+  <h1>
+    احصل على كاش باك
+    <span>15%</span>
+    على مشترياتك
+  </h1>
+  <p class="hero-sub">
+    اشترِ الآن بأسعار العرض الخاصة واحصل على كوبون كاش باك بقيمة 15% من إجمالي مشترياتك قبل الضريبة
+  </p>
+  <div class="hero-deadline">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    الكوبون صالح حتى 31 / 7 / 2026
+  </div>
+</div>
+
+<!-- ===== PRICES ===== -->
+<section style="background: var(--dark-2);">
+  <div class="container">
+    <div class="section-title">أسعار العرض الخاص</div>
+    <div class="prices-grid">
+
+      <div class="price-card">
+        <span class="icon">🚪</span>
+        <h3>الباب الداخلي</h3>
+        <div class="offer-price">
+          <span class="amount">890</span>
+          <span class="unit">ريال / باب</span>
+        </div>
+        <div class="normal-price">السعر العادي: <span>950 ريال</span></div>
+        <span class="tag-offer">سعر العرض</span>
+      </div>
+
+      <div class="price-card">
+        <span class="icon">🏗️</span>
+        <h3>الباب الخارجي — كلادينج</h3>
+        <div class="offer-price">
+          <span class="amount">850</span>
+          <span class="unit">ريال / م²</span>
+        </div>
+        <div class="normal-price">السعر العادي: <span>950 ريال</span></div>
+        <span class="tag-offer">سعر العرض</span>
+      </div>
+
+      <div class="price-card">
+        <span class="icon">🪵</span>
+        <h3>الباب الخارجي — ملامين</h3>
+        <div class="offer-price">
+          <span class="amount">750</span>
+          <span class="unit">ريال / م²</span>
+        </div>
+        <div class="normal-price">السعر العادي: <span>800 ريال</span></div>
+        <span class="tag-offer">سعر العرض</span>
+      </div>
+
+    </div>
+    <p style="margin-top:18px; font-size:0.82rem; color:var(--text-muted); line-height:1.7;">
+      * أسعار الأيام العادية المذكورة أعلاه تُطبَّق في أمر البيع التالي عند استخدام كوبون الكاش باك.
+    </p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== CASHBACK MECHANIC ===== -->
+<section>
+  <div class="container">
+    <div class="section-title">آلية احتساب الكاش باك</div>
+    <div class="mechanic-box">
+      <p style="font-size:0.97rem; color:rgba(255,255,255,0.8); line-height:1.8; margin-bottom:6px;">
+        عند تجاوز إجمالي فاتورتك <strong style="color:var(--gold);">5,000 ريال شامل الضريبة</strong>، تستحق كاش باك بنسبة 15% محتسبةً على الإجمالي <u>قبل الضريبة</u> فقط.
+      </p>
+
+      <div class="example-calc">
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:16px;">📊 مثال توضيحي</p>
+        <div class="calc-row">
+          <span class="label">إجمالي الفاتورة (شامل الضريبة)</span>
+          <span class="value">11,500 ريال</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">الإجمالي قبل الضريبة</span>
+          <span class="value">10,000 ريال</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">نسبة الكاش باك</span>
+          <span class="value">15%</span>
+        </div>
+        <div class="calc-row highlight">
+          <span class="label">قيمة الكوبون الذي تحصل عليه</span>
+          <span class="value">1,500 ريال 🎁</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== STEPS ===== -->
+<section style="background: var(--dark-2);">
+  <div class="container">
+    <div class="section-title">خطوات العمل</div>
+    <div class="steps-list">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>إنشاء عرض السعر بأسعار العرض الخاص</h4>
+          <p>يقوم مندوب المبيعات بإدخال بيانات العميل وتفاصيل المنتجات والكميات بأسعار العرض (890 / 850 / 750 ريال).</p>
+          <div class="step-tip">💡 يمكن تأجيل تحويل عرض السعر إلى أمر بيع حتى رفع المقاسات واعتماد الكميات والأسعار بالكامل.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>مراجعة البيانات والتأكيد النهائي</h4>
+          <p>يجب التحقق من صحة جميع البيانات والأسعار والكميات قبل التحويل لأمر بيع، لأن الكوبون يُولَّد لحظة التأكيد ولا يمكن تعديله لاحقاً.</p>
+          <div class="step-alert">🚫 بعد تحويل عرض السعر إلى أمر بيع، لن يُعاد احتساب الكوبون حتى لو أُضيفت منتجات جديدة.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>تأكيد أمر البيع وتوليد الكوبون</h4>
+          <p>بعد تأكيد أمر البيع، يُولِّد النظام تلقائياً بطاقة هدايا تحتوي على رمز كوبون خاص بهذا العميل فقط.</p>
+          <div class="step-tip">✅ الكوبون مرتبط بهوية العميل ولا يمكن نقله أو استخدامه لعميل آخر.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>إنشاء عرض سعر ثانٍ بأسعار الأيام العادية</h4>
+          <p>عند رغبة العميل في استخدام الكوبون، يُنشأ عرض سعر جديد بأسعار الأيام العادية، ويجب أن تكون المنتجات <strong>مختلفة عن منتجات الأمر الأول.</strong></p>
+          <div class="step-alert">⚠️ إذا اشترى العميل أبواباً داخلية في الطلب الأول، فيجب أن يكون الطلب التالي أبواباً خارجية أو نوافذ — لا يُقبل نفس النوع.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>تطبيق الكوبون واستكمال الأمر</h4>
+          <p>بعد إدخال تفاصيل المنتجات في عرض السعر الثاني، يُدخَل رمز الكوبون الخاص بالعميل. يظهر الخصم تلقائياً في بنود عرض السعر، ثم يُؤكَّد ويتحول لأمر بيع.</p>
+          <div class="step-tip">🔄 بعد استخدام الكوبون تكتمل الدورة بالكامل.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== COUPON RULES ===== -->
+<section>
+  <div class="container">
+    <div class="section-title">قواعد الكوبون</div>
+    <div class="coupon-rules">
+      <div class="rule-chip">
+        <span class="chip-icon">📅</span>
+        <span class="chip-label">تاريخ الانتهاء</span>
+        <span class="chip-val">31 يوليو 2026</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-icon">1️⃣</span>
+        <span class="chip-label">عدد مرات الاستخدام</span>
+        <span class="chip-val">مرة واحدة فقط</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-icon">👤</span>
+        <span class="chip-label">قابلية النقل</span>
+        <span class="chip-val">لنفس العميل حصراً</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-icon">💯</span>
+        <span class="chip-label">طريقة الاستخدام</span>
+        <span class="chip-val">بكامل القيمة دفعةً واحدة</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-icon">🔄</span>
+        <span class="chip-label">المنتج في الأمر الثاني</span>
+        <span class="chip-val">يجب أن يختلف عن الأول</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-icon">🚫</span>
+        <span class="chip-label">الإلغاء أو الاستبدال</span>
+        <span class="chip-val">غير مسموح نهائياً</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== TERMS & SALES POLICY ===== -->
+<section style="background: var(--dark-2);">
+  <div class="container">
+    <div class="section-title">الشروط والأحكام وسياسات المبيعات</div>
+    <div class="terms-grid">
+
+      <div class="terms-panel">
+        <h3>📋 شروط العميل</h3>
+        <ul class="terms-list">
+          <li>يشترط أن يتجاوز إجمالي الفاتورة 5,000 ريال شامل ضريبة القيمة المضافة للتأهل للحصول على الكاش باك.</li>
+          <li>يُحتسب الكاش باك بنسبة 15% على القيمة الإجمالية قبل الضريبة فقط.</li>
+          <li>الكوبون شخصي وغير قابل للتحويل لأي عميل أو طرف آخر.</li>
+          <li>يجب استخدام الكوبون قبل تاريخ 31/7/2026، ولا يُقبل بعد انتهاء الصلاحية.</li>
+          <li>يُستخدم الكوبون مرة واحدة فقط وبكامل قيمته في أمر البيع التالي مباشرةً.</li>
+          <li>لا يجوز استخدام الكوبون على نفس نوع المنتجات المُشتراة في الأمر الأول (أبواب داخلية → يجب الشراء التالي في أبواب خارجية أو نوافذ).</li>
+          <li>تُطبَّق أسعار الأيام العادية في أمر البيع الثاني الذي يُستخدم فيه الكوبون.</li>
+          <li>لا يمكن إلغاء الكوبون أو استبداله نقداً بعد توليده.</li>
+          <li>يحق للشركة إلغاء العرض دون إشعار مسبق في حالات الاستخدام غير الصحيح أو التلاعب.</li>
+        </ul>
+      </div>
+
+      <div class="terms-panel">
+        <h3>👨‍💼 سياسات فريق المبيعات</h3>
+        <ul class="terms-list">
+          <li>يجب التحقق من استيفاء شرط الحد الأدنى (5,000 ريال شامل الضريبة) قبل الوعد بالكوبون للعميل.</li>
+          <li>يُمنع تحويل عرض السعر إلى أمر بيع إلا بعد التأكد الكامل من المنتجات والكميات والأسعار وموافقة العميل النهائية.</li>
+          <li>يُنصح بتأجيل التحويل لأمر بيع حتى رفع المقاسات واعتماد الكميات النهائية لتجنب أي خطأ في الكوبون.</li>
+          <li>لا يجوز تعديل أمر البيع أو الكوبون بعد التأكيد تحت أي مسمى أو ظرف.</li>
+          <li>التحقق من هوية العميل وتطابق رمز الكوبون مع سجله قبل تطبيق الخصم في الأمر الثاني.</li>
+          <li>أسعار الأمر الأول (العرض): 890 / 850 / 750 ريال. أسعار الأمر الثاني (عادية): 950 / 950 / 800 ريال.</li>
+          <li>التركيز الشديد مطلوب في كل خطوة وإبلاغ مدير العمليات فوراً عند أي إشكالية.</li>
+          <li>يجب أن يكون المنتج في الأمر الثاني مختلفاً نوعاً عن الأمر الأول — التحقق إلزامي قبل تطبيق الكوبون.</li>
+          <li>لا يُولَّد الكوبون إلا لحظة تأكيد أمر البيع الأول، فالتسرع في التأكيد يُفسد قيمة الكوبون.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== WARNING ===== -->
+<section>
+  <div class="container">
+    <div class="warning-box">
+      <h3>⛔ تنبيهات هامة جداً — يجب الانتباه</h3>
+      <ul>
+        <li>بعد تحويل عرض السعر إلى أمر بيع، <strong>لن يتغير الكوبون</strong> حتى لو أضاف العميل منتجات إضافية أو زاد المبلغ.</li>
+        <li>لا يمكن تعديل أو إلغاء الكوبون بعد توليده بأي حال من الأحوال.</li>
+        <li>أكواد الكوبون سرية وخاصة بكل عميل — الخلط بين الأكواد يُعرِّض المبيعات لمخاطر قانونية ومالية.</li>
+        <li>الكوبون يُستخدم في أمر بيع واحد لاحق فقط — لا يتجزأ ولا يُرحَّل.</li>
+        <li>المنتج في الأمر الثاني لازم يكون مختلفاً — النظام يتحقق من ذلك ويُطبَّق بصرامة.</li>
+        <li>التأكد من توقيت كل أمر بيع أمر بالغ الأهمية ويؤثر مباشرة على قيمة الكوبون.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== CONTACTS ===== -->
+<section style="background: var(--dark-2);">
+  <div class="container">
+    <div class="section-title">للتواصل والاستفسار</div>
+    <p style="margin-bottom:24px; color:rgba(255,255,255,0.65); font-size:0.92rem;">
+      تواصل مع المسؤولين لأي استفسار أو إشكالية تتعلق بالعرض أو الكوبون:
+    </p>
+    <div class="contacts">
+      <div class="contact-card">
+        <div class="avatar">ع</div>
+        <div class="name">عبدالله الخولي</div>
+        <div class="role">مدير العمليات</div>
+      </div>
+      <div class="contact-card">
+        <div class="avatar">م</div>
+        <div class="name">محمد العذيبي</div>
+        <div class="role">مدير الفروع</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p><strong>عرض الكاش باك 15%</strong> — صالح على المشتريات الجديدة فقط</p>
+  <p style="margin-top:8px;">الكوبون ساري حتى <strong>31 يوليو 2026</strong> • الشركة تحتفظ بحق تعديل الشروط دون إشعار مسبق</p>
+  <p style="margin-top:8px; font-size:0.78rem; color:#4A5568;">جميع الأسعار بالريال السعودي • ضريبة القيمة المضافة 15% محتسبة منفصلة</p>
+</footer>
+
+</body>
+</html>
