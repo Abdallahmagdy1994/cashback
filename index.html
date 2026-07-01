@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>دليل فريق المبيعات — عرض الكاش باك 15%</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family:'Tajawal'; src:local('Tajawal Regular'); font-weight:400; }
+    @font-face { font-family:'Tajawal'; src:local('Tajawal Medium'); font-weight:500; }
+    @font-face { font-family:'Tajawal'; src:local('Tajawal Bold'); font-weight:700; }
+    @font-face { font-family:'Tajawal'; src:local('Tajawal ExtraBold'); font-weight:800; }
+    @font-face { font-family:'Tajawal'; src:local('Tajawal Black'); font-weight:900; }
+    @font-face { font-family:'Cairo'; src:local('Cairo'); font-weight:400 900; }
+  </style>
   <style>
     :root {
       --gold:       #C8932A;
@@ -204,6 +211,66 @@
       background: rgba(0,0,0,0.4); text-align: center; padding: 28px 20px; color: var(--text-muted); font-size: 0.8rem; line-height: 1.8;
     }
     footer strong { color: var(--gold-light); }
+
+    /* ── VIDEO SECTION ── */
+    .video-card {
+      background: linear-gradient(135deg, rgba(200,147,42,0.1), rgba(15,52,96,0.5));
+      border: 1.5px solid var(--gold);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .video-thumb {
+      flex-shrink: 0;
+      width: 110px; height: 110px;
+      background: linear-gradient(135deg, var(--dark-3), var(--dark));
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 2.4rem;
+    }
+    .video-thumb span { font-size: 0.7rem; color: var(--gold-light); font-weight: 700; letter-spacing: 1px; }
+    .video-info { flex: 1; min-width: 200px; }
+    .video-info h3 { font-size: 1.1rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .video-info p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.75; margin-bottom: 18px; }
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .video-btn:hover { opacity: 0.88; }
+    .video-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    /* ── PRINT ── */
+    @page { size: A4; margin: 14mm 16mm; }
+    @media print {
+      .video-btn { background: var(--gold) !important; }
+      .step-body, .policy-card, .critical-box, .checklist, .swap-table, .mechanic-box, .contact-card {
+        break-inside: avoid; page-break-inside: avoid;
+      }
+      .section-title { break-after: avoid; page-break-after: avoid; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
   </style>
 </head>
 <body>
@@ -299,8 +366,8 @@
         <div class="step-num">4</div>
         <div class="step-body">
           <h4>عند رغبة العميل في استخدام الكوبون: عرض سعر ثانٍ بالأسعار العادية</h4>
-          <p>أنشئ عرض سعر جديد منفصل بأسعار الأيام العادية (950 / 950 / 800 / حسب القائمة للنوافذ)، وتأكد أن نوع المنتج <strong>مختلف</strong> عن الطلب الأول.</p>
-          <div class="step-alert">⚠️ تحقق إلزامياً: إذا كان الطلب الأول أبواباً داخلية، يجب أن يكون الطلب الثاني أبواباً خارجية (كلادينج أو ملامين) أو نوافذ — وليس أبواباً داخلية مرة أخرى.</div>
+          <p>أنشئ عرض سعر جديد منفصل بأسعار الأيام العادية (950 / 950 / 800 / حسب القائمة للنوافذ). <strong>يُطبَّق الكوبون بكامل قيمته على منتج واحد فقط</strong> في هذا الأمر، ويجب أن يكون نوع المنتج مختلفاً عن منتج الطلب الأول.</p>
+          <div class="step-alert">⚠️ تنبيه إلزامي: الكوبون يُستخدم على <u>منتج واحد فقط</u> في الأمر الثاني ولا يُوزَّع على أكثر من منتج. كذلك يجب اختلاف نوع المنتج: إذا كان الطلب الأول أبواباً داخلية → الثاني أبواب خارجية أو نوافذ فقط.</div>
         </div>
       </div>
 
@@ -323,19 +390,25 @@
 <section>
   <div class="container">
     <div class="section-title">4️⃣ جدول تبديل نوع المنتج (إلزامي التحقق منه)</div>
+
+    <!-- single-product rule highlight -->
+    <div style="background:rgba(229,57,53,0.13);border:1.5px solid rgba(229,57,53,0.45);border-radius:14px;padding:16px 20px;margin-bottom:20px;font-size:0.92rem;color:#FFCDD2;line-height:1.75;">
+      🔴 <strong>قاعدة أساسية:</strong> الكوبون يُطبَّق بكامل قيمته على <u>منتج واحد فقط</u> في الأمر الثاني — لا يُجزَّأ ولا يُوزَّع على أكثر من صنف أو بند في نفس الأمر.
+    </div>
+
     <table class="swap-table">
       <thead>
-        <tr><th>منتج الطلب الأول (الذي ولّد الكوبون)</th><th>المنتجات المسموحة في الطلب الثاني</th></tr>
+        <tr><th>منتج الطلب الأول (الذي ولّد الكوبون)</th><th>المنتج المسموح به في الطلب الثاني (منتج واحد فقط)</th></tr>
       </thead>
       <tbody>
-        <tr><td class="from">أبواب داخلية</td><td class="to">أبواب خارجية (كلادينج / ملامين) أو نوافذ</td></tr>
-        <tr><td class="from">أبواب خارجية (كلادينج)</td><td class="to">أبواب داخلية أو ملامين أو نوافذ</td></tr>
-        <tr><td class="from">أبواب خارجية (ملامين)</td><td class="to">أبواب داخلية أو كلادينج أو نوافذ</td></tr>
-        <tr><td class="from">نوافذ</td><td class="to">أبواب داخلية أو أبواب خارجية</td></tr>
+        <tr><td class="from">أبواب داخلية</td><td class="to">أبواب خارجية (كلادينج أو ملامين) — أو نوافذ</td></tr>
+        <tr><td class="from">أبواب خارجية (كلادينج)</td><td class="to">أبواب داخلية — أو ملامين — أو نوافذ</td></tr>
+        <tr><td class="from">أبواب خارجية (ملامين)</td><td class="to">أبواب داخلية — أو كلادينج — أو نوافذ</td></tr>
+        <tr><td class="from">نوافذ</td><td class="to">أبواب داخلية — أو أبواب خارجية</td></tr>
       </tbody>
     </table>
     <p style="margin-top:14px; font-size:0.85rem; color:var(--text-muted); line-height:1.7;">
-      📌 القاعدة العامة: لا يمكن استخدام الكوبون لشراء نفس فئة المنتج التي تم شراؤها في الطلب الأول الذي ولّد الكوبون.
+      📌 الكوبون يُستخدم على نوع منتج واحد مختلف عن الطلب الأول فقط — حدد مع العميل المنتج المطلوب قبل إنشاء عرض السعر الثاني.
     </p>
   </div>
 </section>
@@ -395,6 +468,7 @@
         <li><strong>لا تعديل ولا إلغاء:</strong> الكوبون لا يمكن تعديله أو إلغاؤه أو استبداله بعد توليده تحت أي ظرف.</li>
         <li><strong>سرية الكوبون:</strong> كل كوبون مرتبط بعميل واحد فقط — تأكد من مطابقة الاسم قبل التطبيق، والخلط بين أكواد العملاء خطأ غير مقبول.</li>
         <li><strong>التحقق من نوع المنتج:</strong> يجب أن يكون المنتج في الطلب الثاني مختلفاً نوعاً عن الطلب الأول — راجع جدول التبديل في القسم الرابع قبل التطبيق.</li>
+        <li><strong>منتج واحد فقط:</strong> الكوبون يُطبَّق بكامل قيمته على منتج واحد فقط في الأمر الثاني — حدد مع العميل المنتج قبل إنشاء عرض السعر، ولا تدخل أصنافاً متعددة وتوزع الكوبون عليها.</li>
         <li><strong>توقيت التأكيد:</strong> لا تُؤكِّد أمر البيع إلا بعد التأكد التام من جميع التفاصيل — التسرع هو السبب الأول للأخطاء في هذا العرض.</li>
       </ul>
     </div>
@@ -413,10 +487,35 @@
         <li>تم التأكد من نوع المنتج والكمية والمقاس بدقة مع العميل.</li>
         <li>تم احتساب الإجمالي قبل الضريبة بشكل صحيح من النظام مباشرة.</li>
         <li>تم تأكيد السعر الصحيح (سعر العرض في الطلب الأول / السعر العادي في الطلب الثاني).</li>
-        <li>عند وجود كوبون، تم التحقق من مطابقة اسم العميل ونوع المنتج المختلف.</li>
+        <li>عند وجود كوبون، تم التحقق من مطابقة اسم العميل ونوع المنتج المختلف، وأن الكوبون مطبَّق على منتج واحد فقط في الأمر الثاني.</li>
         <li>تم إعلام العميل بتاريخ انتهاء صلاحية الكوبون (31/7/2026).</li>
         <li>تم التأكد أن العميل موافق نهائياً على كل التفاصيل قبل الضغط على تأكيد أمر البيع.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- VIDEO SECTION -->
+<section>
+  <div class="container">
+    <div class="section-title">🎬 شرح تفصيلي على أودو</div>
+    <div class="video-card">
+      <div class="video-thumb">
+        ▶️
+        <span>فيديو</span>
+      </div>
+      <div class="video-info">
+        <h3>عرض الكاش باك — شرح خطوات العمل على نظام أودو</h3>
+        <p>
+          هذا الفيديو يشرح بالتفصيل الكامل خطوات تنفيذ العرض على نظام أودو — من إنشاء عرض السعر، مروراً بتأكيد أمر البيع وتوليد الكوبون، وصولاً لاستخدامه في الأمر الثاني. يُنصح بمشاهدته كاملاً قبل البدء في أي عملية بيع ضمن هذا العرض.
+        </p>
+        <a class="video-btn" href="https://1drv.ms/v/c/26a6f236a2d539b3/IQByY46cTgQQSqRyzCWrPPoBAccYdxEEARSn1q9pOge1z7I?e=0gXBRH" target="_blank">
+          ▶ &nbsp; مشاهدة الفيديو التعليمي
+        </a>
+        <p class="video-note">📎 الفيديو مرفوع على OneDrive — يُفتح في المتصفح مباشرةً ويمكنك ضبط جودة الفيديو من ايقونة الترس اذا كانت سيئة</p>
+      </div>
     </div>
   </div>
 </section>
@@ -429,7 +528,7 @@
     <div class="section-title">للتواصل عند أي إشكالية</div>
     <div class="contacts">
       <div class="contact-card">
-        <div class="avatar">ع</div>
+        <div class="avatar">م</div>
         <div class="name">عبدالله الخولي</div>
         <div class="role">مدير العمليات</div>
       </div>
